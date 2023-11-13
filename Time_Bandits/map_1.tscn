@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c63q6phsal6ao"]
+[gd_scene load_steps=5 format=3 uid="uid://c63q6phsal6ao"]
 
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://Player/Player.tscn" id="1_efidv"]
+[ext_resource type="Script" path="res://global.gd" id="1_il6mf"]
 [ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://enemy.tscn" id="2_xeqbj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30pne"]
 size = Vector2(1155, 94)
 
 [node name="Map 1" type="Node2D"]
+script = ExtResource("1_il6mf")
 
 [node name="Player" parent="." instance=ExtResource("1_efidv")]
 position = Vector2(332, 216)

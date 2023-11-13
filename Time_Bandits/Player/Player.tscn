@@ -15,7 +15,7 @@ script = ExtResource("1_sp7gg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c3i57")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.164062, 0.145508)
 texture = ExtResource("1_jehw3")
 
@@ -24,5 +24,8 @@ texture = ExtResource("1_jehw3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 shape = SubResource("CircleShape2D_qr4yy")
 
+[node name="attack_cooldown" type="Timer" parent="."]
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
