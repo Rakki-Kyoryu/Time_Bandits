@@ -8,23 +8,16 @@ var health = 100
 var player_alive = true
 var current_dir = "none"
 
+func _ready():
+	$AnimatedSprite2D.play("front_idle")
+
 func _physics_process(delta):
 	enemy_attacks()
 	player_movement(delta)
 
 func player_movement(delta):
 	
-	if Input.is_action_pressed("right"):
-		current_dir = "right"
-		play_anim(1)
-		velocity.x = speed
-		velocity.y = 0
-	elif Input.is_action_pressed("left"):
-		current_dir = "left"
-		play_anim(1)
-		velocity.x = -speed
-		velocity.y = 0
-	elif Input.is_action_pressed("down"):
+	if Input.is_action_pressed("down"):
 		current_dir = "down"
 		play_anim(1)
 		velocity.y = speed 
@@ -34,6 +27,16 @@ func player_movement(delta):
 		play_anim(1)
 		velocity.y = -speed
 		velocity.x = 0
+	elif Input.is_action_pressed("right"):
+		current_dir = "right"
+		play_anim(1)
+		velocity.x = speed
+		velocity.y = 0
+	elif Input.is_action_pressed("left"):
+		current_dir = "left"
+		play_anim(1)
+		velocity.x = -speed
+		velocity.y = 0	
 	else:
 		play_anim(0)
 		velocity.y = 0
