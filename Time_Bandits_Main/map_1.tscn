@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c63q6phsal6ao"]
+
+[ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://Player/Player.tscn" id="1_efidv"]
+[ext_resource type="Script" path="res://global.gd" id="1_il6mf"]
+[ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://enemy/enemy.tscn" id="2_xeqbj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30pne"]
+size = Vector2(1155, 94)
+
+[node name="Map 1" type="Node2D"]
+script = ExtResource("1_il6mf")
+
+[node name="Player" parent="." instance=ExtResource("1_efidv")]
+position = Vector2(332, 216)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(593, 42)
+shape = SubResource("RectangleShape2D_30pne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(578, 605)
+shape = SubResource("RectangleShape2D_30pne")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 10.0
+offset_top = 559.0
+offset_right = 1159.0
+offset_bottom = 599.0
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 14.0
+offset_top = 51.0
+offset_right = 1163.0
+offset_bottom = 91.0
+
+[node name="enemy" parent="." instance=ExtResource("2_xeqbj")]
+position = Vector2(1095, 291)
