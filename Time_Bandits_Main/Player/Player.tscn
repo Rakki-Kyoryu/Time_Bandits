@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnvcesvjat4af" path="res://art/sprites/characters/player.png" id="2_xmsfl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3i57"]
-radius = 28.0179
+radius = 12.1655
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxw3q"]
 atlas = ExtResource("2_xmsfl")
@@ -417,7 +417,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr4yy"]
-radius = 14.0
+radius = 12.1655
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -431,8 +431,8 @@ shape = SubResource("CircleShape2D_c3i57")
 position = Vector2(-4, -9)
 scale = Vector2(1.18229, 1.18229)
 sprite_frames = SubResource("SpriteFrames_208fj")
-animation = &"faint"
-frame_progress = 0.43618
+animation = &"back_idle"
+frame_progress = 0.503479
 
 [node name="player_hitbox" type="Area2D" parent="."]
 
