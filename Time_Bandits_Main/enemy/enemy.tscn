@@ -143,7 +143,7 @@ position = Vector2(0, -10)
 scale = Vector2(5.56445, 5.28125)
 sprite_frames = SubResource("SpriteFrames_tf062")
 animation = &"idle"
-frame_progress = 0.387673
+frame_progress = 0.438552
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -161,7 +161,10 @@ shape = SubResource("CircleShape2D_tr37p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("CircleShape2D_jroau")
 
+[node name="take_damage_cooldown" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="body_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

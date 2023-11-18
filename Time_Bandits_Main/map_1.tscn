@@ -1,7 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://c63q6phsal6ao"]
+[gd_scene load_steps=33 format=3 uid="uid://datyg1y346kdo"]
 
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://Player/Player.tscn" id="1_efidv"]
-[ext_resource type="Script" path="res://global.gd" id="1_il6mf"]
 [ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://enemy/enemy.tscn" id="2_xeqbj"]
 [ext_resource type="Texture2D" uid="uid://bfnv3s0a5c088" path="res://art/sprites/tilesets/plains.png" id="4_t6srw"]
 [ext_resource type="Texture2D" uid="uid://c5csmdi4xhnd7" path="res://art/sprites/tilesets/grass.png" id="5_vgo7g"]
@@ -17,8 +16,18 @@
 [ext_resource type="Texture2D" uid="uid://cas3aqpeqeo2w" path="res://art/sprites/tilesets/decor_16x16.png" id="12_4otdv"]
 [ext_resource type="Texture2D" uid="uid://bp1eaj5efupqr" path="res://art/sprites/tilesets/fences.png" id="13_ekilf"]
 
+[sub_resource type="GDScript" id="GDScript_oxfs5"]
+script/source = "extends Node2D
+
+
+var player_current_attack = false
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30pne"]
-size = Vector2(1155, 94)
+size = Vector2(1265.31, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqov7"]
+size = Vector2(275.332, 521.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yynf4"]
 texture = ExtResource("4_t6srw")
@@ -1229,7 +1238,7 @@ sources/12 = SubResource("TileSetAtlasSource_v65ys")
 [node name="Map 1" type="Node2D"]
 position = Vector2(-15, 4)
 scale = Vector2(1.00105, 1)
-script = ExtResource("1_il6mf")
+script = SubResource("GDScript_oxfs5")
 
 [node name="Player" parent="." instance=ExtResource("1_efidv")]
 position = Vector2(332, 216)
@@ -1237,12 +1246,22 @@ position = Vector2(332, 216)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(593, 42)
+position = Vector2(612.115, 43)
 shape = SubResource("RectangleShape2D_30pne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(578, 605)
+position = Vector2(614.038, 605)
 shape = SubResource("RectangleShape2D_30pne")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1345.78, 306.25)
+scale = Vector2(1.0116, 1.00913)
+shape = SubResource("RectangleShape2D_xqov7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-118.875, 324)
+scale = Vector2(1.0116, 1.00913)
+shape = SubResource("RectangleShape2D_xqov7")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 10.0
@@ -1255,6 +1274,7 @@ offset_left = 14.0
 offset_top = 51.0
 offset_right = 1163.0
 offset_bottom = 91.0
+scale = Vector2(1.04358, 1)
 
 [node name="enemy" parent="." instance=ExtResource("2_xeqbj")]
 position = Vector2(1095, 291)
@@ -1273,3 +1293,6 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(720937, 65536, 4, 786473, 65536, 5, 852009, 65536, 6, 852010, 131072, 6, 852011, 196608, 6, 786475, 196608, 5, 720939, 196608, 4, 720938, 131072, 4, 786474, 131072, 5, 1441798, 12, 5, 1507334, 12, 6, 1572870, 12, 7, 1638406, 12, 8, 1441799, 65548, 5, 1507335, 65548, 6, 1572871, 65548, 7, 1638407, 65548, 8, 1441800, 131084, 5, 1507336, 131084, 6, 1572872, 131084, 7, 1638408, 131084, 8, 655371, 12, 5, 720907, 12, 6, 786443, 12, 7, 851979, 12, 8, 655372, 65548, 5, 720908, 65548, 6, 786444, 65548, 7, 851980, 65548, 8, 655373, 131084, 5, 720909, 131084, 6, 786445, 131084, 7, 851981, 131084, 8, 655386, 12, 5, 720922, 12, 6, 786458, 12, 7, 851994, 12, 8, 655387, 65548, 5, 720923, 65548, 6, 786459, 65548, 7, 851995, 65548, 8, 655388, 131084, 5, 720924, 131084, 6, 786460, 131084, 7, 851996, 131084, 8, 1703959, 12, 5, 1769495, 12, 6, 1835031, 12, 7, 1900567, 12, 8, 1703960, 65548, 5, 1769496, 65548, 6, 1835032, 65548, 7, 1900568, 65548, 8, 1703961, 131084, 5, 1769497, 131084, 6, 1835033, 131084, 7, 1900569, 131084, 8, 1769522, 12, 5, 1835058, 12, 6, 1900594, 12, 7, 1966130, 12, 8, 1769523, 65548, 5, 1835059, 65548, 6, 1900595, 65548, 7, 1966131, 65548, 8, 1769524, 131084, 5, 1835060, 131084, 6, 1900596, 131084, 7, 1966132, 131084, 8, 720944, 12, 5, 786480, 12, 6, 852016, 12, 7, 917552, 12, 8, 720945, 65548, 5, 786481, 65548, 6, 852017, 65548, 7, 917553, 65548, 8, 720946, 131084, 5, 786482, 131084, 6, 852018, 131084, 7, 917554, 131084, 8, 1638461, 12, 5, 1703997, 12, 6, 1769533, 12, 7, 1835069, 12, 8, 1638462, 65548, 5, 1703998, 65548, 6, 1769534, 65548, 7, 1835070, 65548, 8, 1638463, 131084, 5, 1703999, 131084, 6, 1769535, 131084, 7, 1835071, 131084, 8, 1638458, 12, 5, 1703994, 12, 6, 1769530, 12, 7, 1835066, 12, 8, 1638459, 65548, 5, 1703995, 65548, 6, 1769531, 65548, 7, 1835067, 65548, 8, 1638460, 131084, 5, 1703996, 131084, 6, 1769532, 131084, 7, 1835068, 131084, 8, 720954, 12, 5, 786490, 12, 6, 852026, 12, 7, 917562, 12, 8, 720955, 65548, 5, 786491, 65548, 6, 852027, 65548, 7, 917563, 65548, 8, 720956, 131084, 5, 786492, 131084, 6, 852028, 131084, 7, 917564, 131084, 8, 1638439, 655372, 7, 1703975, 655372, 8, 1638440, 720908, 7, 1703976, 720908, 8, 1507378, 655372, 7, 1572914, 655372, 8, 1507379, 720908, 7, 1572915, 720908, 8, 786469, 655372, 7, 852005, 655372, 8, 786470, 720908, 7, 852006, 720908, 8, 1835021, 655372, 7, 1900557, 655372, 8, 1835022, 720908, 7, 1900558, 720908, 8, 1572882, 655372, 7, 1638418, 655372, 8, 1572883, 720908, 7, 1638419, 720908, 8, 589841, 655372, 7, 655377, 655372, 8, 589842, 720908, 7, 655378, 720908, 8, 1900588, 655372, 7, 1966124, 655372, 8, 1572909, 720908, 2, 1638445, 720908, 3, 1900589, 720908, 7, 1966125, 720908, 8, 1048614, 12, 0, 1048605, 12, 0, 1507356, 12, 0, 1507367, 12, 0, 1900550, 12, 1, 2097171, 12, 1, 1638415, 12, 1, 1572888, 12, 1, 720901, 12, 1, 983050, 12, 1, 458775, 12, 1, 458776, 12, 1, 524312, 12, 1, 524338, 12, 1, 589889, 12, 1, 524353, 12, 1, 1966150, 12, 1, 2097213, 12, 1, 1048618, 655372, 0, 1048619, 720908, 0, 1048624, 655372, 0, 1048625, 720908, 0, 1048632, 655372, 0, 1048633, 720908, 0, 1048628, 655372, 0, 1048629, 720908, 0, 1048591, 655372, 0, 1048592, 720908, 0, 1048580, 655372, 0, 1048581, 720908, 0, 1048599, 655372, 0, 1048600, 720908, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1214.72, 502)
