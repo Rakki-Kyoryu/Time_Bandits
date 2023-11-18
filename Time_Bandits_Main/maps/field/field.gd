@@ -3,8 +3,13 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	if Global.game_first_loadin == true:
+		$Player.position.x = Global.player_start_posx
+		$Player.position.y = Global.player_start_posy
+		Global.game_first_loadin = false
+	else:
+		$Player.position.x = Global.player_exit_cliffside_posx
+		$Player.position.y = Global.player_exit_cliffside_posy
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

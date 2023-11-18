@@ -4,9 +4,11 @@ const speed = 300
 
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
-var health = 100
+@export var max_health = 100
+@onready var current_health = 100
 var player_alive = true
 var current_dir = "none"
+var health_changed = false
 
 var attack_ip = false
 
@@ -49,9 +51,9 @@ func player_movement(delta):
 	move_and_slide()
 		
 	
-	if health <= 0:
+	if current_health <= 0:
 		player_alive = false
-		health = 0
+		current_health = 0
 		self.queue_free()
 
 func play_anim(movement):
@@ -101,10 +103,12 @@ func _on_player_hitbox_body_exited(body):
 		
 func enemy_attacks():
 	if enemy_in_attack_range and enemy_attack_cooldown == true:
-		health = health - 20
+		current_health = current_health - 20
+		Global.player_health = current_health
+		health_changed = true
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
-		print(health)
+		print(current_health)
 
 
 func _on_attack_cooldown_timeout():
@@ -130,7 +134,7 @@ func attack():
 		if dir == "up":
 			$AnimatedSprite2D.play("sword_hit_up")
 			$deal_attack_timer.start()
-
+	
 
 func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()

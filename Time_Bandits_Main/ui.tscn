@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl61we5rygn2w"]
+
+[ext_resource type="Script" path="res://ProgressBar.gd" id="1_mlinn"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 126.0
+offset_bottom = 27.0
+script = ExtResource("1_mlinn")
+
+[node name="Timer" type="Timer" parent="ProgressBar"]
+autostart = true
+
+[connection signal="timeout" from="ProgressBar/Timer" to="ProgressBar" method="_on_timer_timeout"]
