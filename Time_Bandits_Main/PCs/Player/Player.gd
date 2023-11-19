@@ -4,12 +4,13 @@ const speed = 300
 
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
-@export var max_health = 100
-@onready var current_health = 100
+@export var max_health = 500
+@onready var current_health = 500
 var player_alive = true
 var current_dir = "none"
 var health_changed = false
 
+@export var knockback_power: int = 500
 var attack_ip = false
 
 func _ready():
@@ -109,6 +110,7 @@ func enemy_attacks():
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print(current_health)
+		knockback()
 
 
 func _on_attack_cooldown_timeout():
@@ -148,3 +150,15 @@ func current_camera():
 	elif Global.current_scene == "cliff_side":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = true
+		
+func knockback():
+	var knockback_direction = -(velocity).normalized() * knockback_power
+	velocity = knockback_direction
+	move_and_slide()
+		
+		
+		
+
+
+
+
