@@ -30,3 +30,10 @@ func change_scene():
 		if Global.current_scene == "field":
 			get_tree().change_scene_to_file("res://maps/cliffside/cliff_side.tscn")
 			Global.finish_changing_scenes()
+
+
+func _on_inventory_gui_closed():
+	get_tree().paused = false
+
+func _on_inventory_gui_opened():
+	get_tree().paused = true

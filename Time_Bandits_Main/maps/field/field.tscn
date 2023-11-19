@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://datyg1y346kdo"]
+[gd_scene load_steps=37 format=3 uid="uid://datyg1y346kdo"]
 
 [ext_resource type="Script" path="res://maps/field/field.gd" id="1_fwxb5"]
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="2_4lieg"]
 [ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://PCs/enemy/enemy.tscn" id="3_kfe4m"]
 [ext_resource type="Texture2D" uid="uid://b27s6lb21ut08" path="res://art/sprites/tilesets/walls/wooden_door.png" id="4_ap4sk"]
-[ext_resource type="PackedScene" uid="uid://ci2yvv1dv0e6d" path="res://potion.tscn" id="4_gy1yk"]
+[ext_resource type="PackedScene" uid="uid://dpf3173c0nibq" path="res://potion.tscn" id="4_gy1yk"]
 [ext_resource type="Texture2D" uid="uid://chuu4xd2ovv6r" path="res://art/sprites/tilesets/walls/wooden_door_b.png" id="5_gkr6k"]
 [ext_resource type="Texture2D" uid="uid://bbbsb1kxfgimj" path="res://art/sprites/tilesets/decor_8x8.png" id="6_q2vsd"]
 [ext_resource type="Texture2D" uid="uid://cas3aqpeqeo2w" path="res://art/sprites/tilesets/decor_16x16.png" id="7_ug33i"]
@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://ldlpk4i7ixyv" path="res://art/sprites/tilesets/floors/wooden.png" id="14_ccyy0"]
 [ext_resource type="Texture2D" uid="uid://bxwg3a3iexv4q" path="res://art/sprites/tilesets/floors/flooring.png" id="15_cdffd"]
 [ext_resource type="Texture2D" uid="uid://cfn41g5o0yyj7" path="res://art/sprites/tilesets/walls/walls.png" id="16_ggcsi"]
-[ext_resource type="PackedScene" uid="uid://dl61we5rygn2w" path="res://ui.tscn" id="17_kfcml"]
+[ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui.tscn" id="17_kfcml"]
+[ext_resource type="PackedScene" uid="uid://rb6h65pi6tip" path="res://inventory_gui.tscn" id="19_ihcpk"]
+[ext_resource type="Script" path="res://ui.gd" id="19_rth1k"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_teawj"]
 resource_name = "Collectables"
@@ -1295,6 +1297,21 @@ position = Vector2(550.422, 71)
 shape = SubResource("RectangleShape2D_ylqtf")
 
 [node name="UI" parent="." instance=ExtResource("17_kfcml")]
+process_mode = 3
+script = ExtResource("19_rth1k")
+
+[node name="Inventory_gui" parent="UI" instance=ExtResource("19_ihcpk")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -736.0
+offset_top = 238.0
+offset_right = -405.0
+offset_bottom = 444.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
+[connection signal="closed" from="UI/Inventory_gui" to="." method="_on_inventory_gui_closed"]
+[connection signal="opened" from="UI/Inventory_gui" to="." method="_on_inventory_gui_opened"]
