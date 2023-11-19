@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://datyg1y346kdo"]
+[gd_scene load_steps=35 format=3 uid="uid://datyg1y346kdo"]
 
 [ext_resource type="Script" path="res://maps/field/field.gd" id="1_fwxb5"]
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="2_4lieg"]
 [ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://PCs/enemy/enemy.tscn" id="3_kfe4m"]
 [ext_resource type="Texture2D" uid="uid://b27s6lb21ut08" path="res://art/sprites/tilesets/walls/wooden_door.png" id="4_ap4sk"]
+[ext_resource type="PackedScene" uid="uid://ci2yvv1dv0e6d" path="res://potion.tscn" id="4_gy1yk"]
 [ext_resource type="Texture2D" uid="uid://chuu4xd2ovv6r" path="res://art/sprites/tilesets/walls/wooden_door_b.png" id="5_gkr6k"]
 [ext_resource type="Texture2D" uid="uid://bbbsb1kxfgimj" path="res://art/sprites/tilesets/decor_8x8.png" id="6_q2vsd"]
 [ext_resource type="Texture2D" uid="uid://cas3aqpeqeo2w" path="res://art/sprites/tilesets/decor_16x16.png" id="7_ug33i"]
@@ -17,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://bxwg3a3iexv4q" path="res://art/sprites/tilesets/floors/flooring.png" id="15_cdffd"]
 [ext_resource type="Texture2D" uid="uid://cfn41g5o0yyj7" path="res://art/sprites/tilesets/walls/walls.png" id="16_ggcsi"]
 [ext_resource type="PackedScene" uid="uid://dl61we5rygn2w" path="res://ui.tscn" id="17_kfcml"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_teawj"]
+resource_name = "Collectables"
+scenes/1/scene = ExtResource("4_gy1yk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8tq2"]
 texture = ExtResource("4_ap4sk")
@@ -1220,6 +1225,7 @@ sources/14 = SubResource("TileSetAtlasSource_3erh7")
 sources/15 = SubResource("TileSetAtlasSource_3g0mj")
 sources/16 = SubResource("TileSetAtlasSource_g74vs")
 sources/17 = SubResource("TileSetAtlasSource_f5233")
+sources/0 = SubResource("TileSetScenesCollectionSource_teawj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylqtf"]
 size = Vector2(77.9181, 48)
@@ -1254,6 +1260,9 @@ scale = Vector2(1.04358, 1)
 [node name="enemy" parent="." instance=ExtResource("3_kfe4m")]
 position = Vector2(1095, 291)
 
+[node name="enemy2" parent="." instance=ExtResource("3_kfe4m")]
+position = Vector2(116.877, 336)
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_ksxa6")
@@ -1268,6 +1277,13 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(720937, 65541, 4, 786473, 65541, 5, 852009, 65541, 6, 852010, 131077, 6, 852011, 196613, 6, 786475, 196613, 5, 720939, 196613, 4, 720938, 131077, 4, 786474, 131077, 5, 1441798, 17, 5, 1507334, 17, 6, 1572870, 17, 7, 1638406, 17, 8, 1441799, 65553, 5, 1507335, 65553, 6, 1572871, 65553, 7, 1638407, 65553, 8, 1441800, 131089, 5, 1507336, 131089, 6, 1572872, 131089, 7, 1638408, 131089, 8, 655371, 17, 5, 720907, 17, 6, 786443, 17, 7, 851979, 17, 8, 655372, 65553, 5, 720908, 65553, 6, 786444, 65553, 7, 851980, 65553, 8, 655373, 131089, 5, 720909, 131089, 6, 786445, 131089, 7, 851981, 131089, 8, 655386, 17, 5, 720922, 17, 6, 786458, 17, 7, 851994, 17, 8, 655387, 65553, 5, 720923, 65553, 6, 786459, 65553, 7, 851995, 65553, 8, 655388, 131089, 5, 720924, 131089, 6, 786460, 131089, 7, 851996, 131089, 8, 1703959, 17, 5, 1769495, 17, 6, 1835031, 17, 7, 1900567, 17, 8, 1703960, 65553, 5, 1769496, 65553, 6, 1835032, 65553, 7, 1900568, 65553, 8, 1703961, 131089, 5, 1769497, 131089, 6, 1835033, 131089, 7, 1900569, 131089, 8, 1769522, 17, 5, 1835058, 17, 6, 1900594, 17, 7, 1966130, 17, 8, 1769523, 65553, 5, 1835059, 65553, 6, 1900595, 65553, 7, 1966131, 65553, 8, 1769524, 131089, 5, 1835060, 131089, 6, 1900596, 131089, 7, 1966132, 131089, 8, 720944, 17, 5, 786480, 17, 6, 852016, 17, 7, 917552, 17, 8, 720945, 65553, 5, 786481, 65553, 6, 852017, 65553, 7, 917553, 65553, 8, 720946, 131089, 5, 786482, 131089, 6, 852018, 131089, 7, 917554, 131089, 8, 1638461, 17, 5, 1703997, 17, 6, 1769533, 17, 7, 1835069, 17, 8, 1638462, 65553, 5, 1703998, 65553, 6, 1769534, 65553, 7, 1835070, 65553, 8, 1638463, 131089, 5, 1703999, 131089, 6, 1769535, 131089, 7, 1835071, 131089, 8, 1638458, 17, 5, 1703994, 17, 6, 1769530, 17, 7, 1835066, 17, 8, 1638459, 65553, 5, 1703995, 65553, 6, 1769531, 65553, 7, 1835067, 65553, 8, 1638460, 131089, 5, 1703996, 131089, 6, 1769532, 131089, 7, 1835068, 131089, 8, 720954, 17, 5, 786490, 17, 6, 852026, 17, 7, 917562, 17, 8, 720955, 65553, 5, 786491, 65553, 6, 852027, 65553, 7, 917563, 65553, 8, 720956, 131089, 5, 786492, 131089, 6, 852028, 131089, 7, 917564, 131089, 8, 1638439, 655377, 7, 1703975, 655377, 8, 1638440, 720913, 7, 1703976, 720913, 8, 1507378, 655377, 7, 1572914, 655377, 8, 1507379, 720913, 7, 1572915, 720913, 8, 786469, 655377, 7, 852005, 655377, 8, 786470, 720913, 7, 852006, 720913, 8, 1835021, 655377, 7, 1900557, 655377, 8, 1835022, 720913, 7, 1900558, 720913, 8, 1572882, 655377, 7, 1638418, 655377, 8, 1572883, 720913, 7, 1638419, 720913, 8, 589841, 655377, 7, 655377, 655377, 8, 589842, 720913, 7, 655378, 720913, 8, 1900588, 655377, 7, 1966124, 655377, 8, 1572909, 720913, 2, 1638445, 720913, 3, 1900589, 720913, 7, 1966125, 720913, 8, 1048614, 17, 0, 1048605, 17, 0, 1507356, 17, 0, 1507367, 17, 0, 1900550, 17, 1, 2097171, 17, 1, 1638415, 17, 1, 1572888, 17, 1, 720901, 17, 1, 983050, 17, 1, 458775, 17, 1, 458776, 17, 1, 524312, 17, 1, 524338, 17, 1, 589889, 17, 1, 524353, 17, 1, 1966150, 17, 1, 2097213, 17, 1, 1048618, 655377, 0, 1048619, 720913, 0, 1048624, 655377, 0, 1048625, 720913, 0, 1048632, 655377, 0, 1048633, 720913, 0, 1048628, 655377, 0, 1048629, 720913, 0, 1048591, 655377, 0, 1048592, 720913, 0, 1048580, 655377, 0, 1048581, 720913, 0, 1048599, 655377, 0, 1048600, 720913, 0)
+layer_2/name = "Collectables"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array(1179674, 0, 65536, 1441834, 0, 65536, 1048621, 0, 65536, 1310754, 0, 65536, 1638427, 0, 65536, 1507376, 0, 65536, 1310775, 0, 65536, 720950, 0, 65536, 589845, 0, 65536, 983059, 0, 65536)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1214.72, 502)

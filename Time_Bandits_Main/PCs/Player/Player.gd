@@ -162,3 +162,8 @@ func knockback():
 
 
 
+
+
+func _on_player_hitbox_area_entered(area):
+	if area.has_method("collect"):
+		area.collect()
