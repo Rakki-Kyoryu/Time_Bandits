@@ -143,7 +143,7 @@ position = Vector2(0, -10)
 scale = Vector2(5.56445, 5.28125)
 sprite_frames = SubResource("SpriteFrames_tf062")
 animation = &"idle"
-frame_progress = 0.438552
+frame_progress = 0.9799
 offset = Vector2(0, -6)
 
 [node name="Area2D" type="Area2D" parent="."]

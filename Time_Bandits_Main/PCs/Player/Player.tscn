@@ -432,7 +432,7 @@ position = Vector2(-4, -9)
 scale = Vector2(1.18229, 1.18229)
 sprite_frames = SubResource("SpriteFrames_208fj")
 animation = &"sword_hit_side"
-frame_progress = 0.510609
+frame_progress = 0.0803451
 
 [node name="player_hitbox" type="Area2D" parent="."]
 
